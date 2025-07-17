@@ -35,9 +35,9 @@ msg_ok "Created ${APP_USER} user"
 msg_info "Installing Dependencies"
 $STD apt-get install -y \
   git \
-  curl \ 
+  curl \
   wget \
-  build-essential \ 
+  build-essential \
   gcc \
   libpcre3-dev \
   libpq-dev \
