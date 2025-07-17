@@ -12,8 +12,7 @@
     "documentation": null,
     "website": "https://dispatcharr.github.io/Dispatcharr-Docs/",
     "logo": "https://raw.githubusercontent.com/Dispatcharr/Dispatcharr/refs/heads/main/frontend/src/images/logo.png",
-    "description": "Dispatcharr is an open-source powerhouse for managing IPTV streams and EPG data with elegance and control.
-Born from necessity and built with passion, it started as a personal project by OkinawaBoss and evolved with contributions from legends like dekzter, SergeantPanda and Bucatini.",
+    "description": "Dispatcharr is an open-source powerhouse for managing IPTV streams and EPG data with elegance and control. Born from necessity and built with passion, it started as a personal project by OkinawaBoss and evolved with contributions from legends like dekzter, SergeantPanda and Bucatini.",
     "install_methods": [
         {
             "type": "default",
