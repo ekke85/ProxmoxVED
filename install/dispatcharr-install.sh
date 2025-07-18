@@ -174,7 +174,7 @@ ExecStart=$APP_DIR/env/bin/gunicorn \\
     --workers=4 \\
     --worker-class=gevent \\
     --timeout=300 \\
-    --bind unix:$GUNICORN_SOCKET \\
+    --bind 0.0.0.0:5656 \
     dispatcharr.wsgi:application
 Restart=always
 KillMode=mixed
