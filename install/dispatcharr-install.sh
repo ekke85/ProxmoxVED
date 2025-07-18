@@ -76,14 +76,9 @@ if [[ -z "$LATEST_VERSION" ]]; then
 fi
 
 msg_info "Downloading Dispatcharr $LATEST_VERSION"
-# TARBALL_URL="https://github.com/Dispatcharr/Dispatcharr/archive/refs/tags/${LATEST_VERSION}.tar.gz"
-
-# mkdir -p "$APP_DIR"
-# curl -fsSL "$TARBALL_URL" | tar -xz --strip-components=1 -C "$APP_DIR"
-
 fetch_and_deploy_gh_release "dispatcharr" "Dispatcharr/Dispatcharr"
 echo "$LATEST_VERSION" > "/opt/${APPLICATION}_version.txt"
-# chown -R "$APP_USER:$APP_GROUP" "$APP_DIR"
+chown -R "$APP_USER:$APP_GROUP" "$APP_DIR"
 sed -i 's/program\[\x27channel_id\x27\]/program["channel_id"]/g' "${APP_DIR}/apps/output/views.py"
 
 msg_ok "Downloaded Dispatcharr $LATEST_VERSION"
