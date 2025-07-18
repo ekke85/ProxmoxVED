@@ -20,7 +20,7 @@ APP_GROUP="dispatcharr"
 APP_DIR="/opt/dispatcharr"
 DISPATCH_BRANCH="main"
 GUNICORN_RUNTIME_DIR="dispatcharr"
-GUNICORN_SOCKET="/run/${GUNICORN_RUNTIME_DIR}/dispatcharr.sock"
+GUNICORN_PORT="5656"
 NGINX_HTTP_PORT="9191"
 WEBSOCKET_PORT="8001"
 POSTGRES_DB="dispatcharr"
@@ -120,7 +120,7 @@ server {
 
     location / {
         include proxy_params;
-        proxy_pass http://unix:$GUNICORN_SOCKET;
+        proxy_pass http://127.0.0.1:$GUNICORN_SOCKET;
     }
 
     location /static/ {
@@ -174,7 +174,7 @@ ExecStart=$APP_DIR/env/bin/gunicorn \\
     --workers=4 \\
     --worker-class=gevent \\
     --timeout=300 \\
-    --bind 0.0.0.0:5656 \
+    --bind 0.0.0.0:$GUNICORN_PORT \
     dispatcharr.wsgi:application
 Restart=always
 KillMode=mixed
@@ -199,7 +199,7 @@ Environment="POSTGRES_USER=$POSTGRES_USER"
 Environment="POSTGRES_PASSWORD=$POSTGRES_PASSWORD"
 Environment="POSTGRES_HOST=localhost"
 Environment="CELERY_BROKER_URL=redis://localhost:6379/0"
-ExecStart=$APP_DIR/env/bin/celery -A dispatcharr worker -l info
+ExecStart=$APP_DIR/env/bin/celery -A dispatcharr worker -l info -c 4
 Restart=always
 KillMode=mixed
 
