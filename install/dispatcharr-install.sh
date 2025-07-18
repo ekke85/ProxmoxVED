@@ -78,7 +78,7 @@ fi
 msg_info "Downloading Dispatcharr $LATEST_VERSION"
 fetch_and_deploy_gh_release "dispatcharr" "Dispatcharr/Dispatcharr"
 echo "$LATEST_VERSION" > "/opt/${APPLICATION}_version.txt"
-mdir -p /data/{db,epgs,logos,m3us,recordings,uploads}
+mkdir -p /data/{db,epgs,logos,m3us,recordings,uploads}
 chown -R "$APP_USER:$APP_GROUP" "$APP_DIR"
 chown -R "$APP_USER:$APP_GROUP" /data
 
